@@ -296,4 +296,109 @@ public class DoTranslation {
         }
 		return resultado;
 	}
+	
+	public static String traduzRegistradores(String registrador){
+		String resultado = "";
+		switch(registrador) {
+			case "zero":
+				resultado = "00000";
+				break;
+			case "at":
+				resultado = "00001";
+				break;
+			case "v0":
+				resultado = "00010";
+				break;
+			case "v1":
+				resultado = "00011";
+				break;
+			case "a0":
+				resultado = "00100";
+				break;
+			case "a1":
+				resultado = "00101";
+				break;
+			case "a2":
+				resultado = "00110";
+				break;	
+			case "a3":
+				resultado = "00111";
+				break;
+			case "t0":
+				resultado = "01000";
+				break;
+			case "t1":
+				resultado = "01001";
+				break;
+			case "t2":
+				resultado = "01010";
+				break;
+			case "t3":
+				resultado = "01011";
+				break;
+			case "t4":
+				resultado = "01100";
+				break;
+			case "t5":
+				resultado = "01101";
+				break;
+			case "t6":
+				resultado = "01110";
+				break;
+			case "t7":
+				resultado = "01111";
+				break;
+			case "t8":
+				resultado = "11000";
+				break;
+			case "t9":
+				resultado = "11001";
+				break;	
+			case "s0":
+				resultado = "10000";
+				break;
+			case "s1":
+				resultado = "10001";
+				break;
+			case "s2":
+				resultado = "10010";
+				break;
+			case "s3":
+				resultado = "10011";
+				break;
+			case "s4":
+				resultado = "10100";
+				break;
+			case "s5":
+				resultado = "10101";
+				break;
+			case "s6":
+				resultado = "10110";
+				break;
+			case "s7":
+				resultado = "10111";
+				break;
+			case "k0":
+				resultado = "11010";
+				break;
+			case "k1":
+				resultado = "11011";
+				break;
+			case "gp":
+				resultado = "11100";
+				break;
+			case "sp":
+				resultado = "11101";
+				break;
+			case "fp":
+				resultado = "11110";
+				break;
+			case "ra":
+				resultado = "11110";
+				break;
+				
+		}		
+		return resultado;
+	}
 }
+
