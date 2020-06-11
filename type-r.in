@@ -1,4 +1,6 @@
+sw s0, 4(s1)
 add s0, s1, s2
+lw s0, 4(s1)
 sub s0, s1, s2
 mult s0, s1
 div s0, s1
@@ -10,3 +12,4 @@ slt s0, s1, s2
 sll s0, s1, 1
 sll s0, s1, 1
 jr s0
+

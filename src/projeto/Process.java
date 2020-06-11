@@ -3,12 +3,20 @@ package projeto;
 import java.io.*;
 import java.util.Scanner;
 
-public class FileTranslate {
+import memory.MemoryManager;
+import register.RegisterManager;
+
+public class Process {
 	
 	public static void processaTraducaoArquivo(String file_name, String out_file_name) {
 		createFile(out_file_name);
+
+		MemoryManager.createMemoryFile();
+		RegisterManager.createRegisterFile();
 		
-		String data = FileTranslate.readFile(file_name, out_file_name);
+		
+		String data = Process.readFile(file_name, out_file_name);
+		
 		if (data.equals("1")) {
 			System.out.println("Arquivo nao encontrado.");
 			return;
@@ -31,7 +39,9 @@ public class FileTranslate {
 		        resultado = DoTranslation.doTranslation(data);
 		        writeInFile(out_file_name, resultado);
 		      }
-		      myReader.close();		      
+		      myReader.close();	
+		      MemoryManager.writeToFile();
+		      RegisterManager.writeToFile();
 		      return resultado;
 		    } catch (FileNotFoundException e) {
 		      e.printStackTrace();
