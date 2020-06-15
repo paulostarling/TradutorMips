@@ -30,42 +30,36 @@ public class RegisterUtils {
 		case 12:
 			return "t6";
 		case 13:
-			return "t7";	
+			return "t7";
 		case 14:
-			return "t8";
-		case 15:
-			return "t9";
-		case 16:
 			return "s0";
-		case 17:
+		case 15:
 			return "s1";
-		case 18:
+		case 16:
 			return "s2";
-		case 19:
+		case 17:
 			return "s3";
-		case 20:
+		case 18:
 			return "s4";			
-		case 21:
+		case 19:
 			return "s5";
-		case 22:
+		case 20:
 			return "s6";
-		case 23:
+		case 21:
 			return "s7";
-		case 24:
-			return "s8";
-		case 25:
+		case 22:
 			return "gp";
-		case 26:
+		case 23:
 			return "fp";
-		case 27:
+		case 24:
 			return "sp";
-		case 28:
+		case 25:
 			return "ra";
-		case 29:
+		case 26:
 			return "at";
-		case 30:
+		case 27:
 			return "k1";
-		case 31:
+		case 28:
 			return "k2";
 		default:
 			return null;

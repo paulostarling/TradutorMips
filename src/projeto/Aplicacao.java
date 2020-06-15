@@ -11,8 +11,8 @@ public class Aplicacao {
 		String[] comand_split = comand.split(" ");
 		
 		//Verifica como será a entrada
-		if (comand_split.length == 3) {
-			Process.processaTraducaoArquivo(comand_split[1], comand_split[2]);
+		if (comand_split.length == 2) {
+			Process.processaTraducaoArquivo(comand_split[1], "output");
 		}
 		
 	}

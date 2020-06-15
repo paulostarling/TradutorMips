@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 public class MemoryManager {
 	private static String fileName = "memory.out";
+	private static int index = 0;
 	private static ArrayList<Memory> memoryList;
 		
 	public static void createMemoryFile() {
@@ -48,6 +49,20 @@ public class MemoryManager {
 	    }
 	}
 	    
-		  
+	public static void addMemoryIndex() {
+		index++;
+	}
+
+	public static void updateMemory(String operacao, String registrador) {
+		Memory newMemory = memoryList.get(index);
+		
+		int decimal = Integer.parseInt(operacao+registrador ,2);
+		String hexStr = Integer.toString(decimal,16);
+		newMemory.setValue(hexStr);
+		
+		memoryList.set(index, newMemory);
+	}
+	
+	
 	
 }

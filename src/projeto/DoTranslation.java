@@ -1,5 +1,9 @@
 package projeto;
 
+import memory.MemoryManager;
+import register.Register;
+import register.RegisterManager;
+
 public class DoTranslation {
 	public static String doTranslation(String data) {
 		String resultado = "";
@@ -21,7 +25,10 @@ public class DoTranslation {
 		String aux;
 		String binario;
 		String resultado = "";
+		Register register1, register2;
+		int op1, op2, newValue;
 		vetor_linha[0] = vetor_linha[0].toLowerCase();		
+		
 		switch(vetor_linha[0]) {
 		
 		case "nop":
@@ -35,6 +42,15 @@ public class DoTranslation {
 				resultado += traduzRegistradores(vetor_linha[1]);
 				resultado += "00000";
 				resultado += "100000";
+				
+				register1 = RegisterManager.getRegisterByName(vetor_linha[2]);
+				register2 = RegisterManager.getRegisterByName(vetor_linha[3]);
+				
+				op1 = Integer.parseInt(register1.getValue(), 2);
+				op2 = Integer.parseInt(register2.getValue(), 2);
+				newValue = op1 + op2;				
+				RegisterManager.updateRegister(vetor_linha[1], newValue);
+				
 				break;
 				
 			case "xor":
@@ -53,6 +69,14 @@ public class DoTranslation {
 				resultado += traduzRegistradores(vetor_linha[1]);
 				resultado += "00000";
 				resultado += "100010";
+				
+				register1 = RegisterManager.getRegisterByName(vetor_linha[2]);
+				register2 = RegisterManager.getRegisterByName(vetor_linha[3]);
+				
+				op1 = Integer.parseInt(register1.getValue(), 2);
+				op2 = Integer.parseInt(register2.getValue(), 2);
+				newValue = op1 - op2;				
+				RegisterManager.updateRegister(vetor_linha[1], newValue);
 				break;
 				
 			case "mult":
@@ -61,6 +85,14 @@ public class DoTranslation {
 				resultado += traduzRegistradores(vetor_linha[2]);
 				resultado += "0000000000";
 				resultado += "011000";
+				
+				register1 = RegisterManager.getRegisterByName(vetor_linha[2]);
+				register2 = RegisterManager.getRegisterByName(vetor_linha[3]);
+				
+				op1 = Integer.parseInt(register1.getValue(), 2);
+				op2 = Integer.parseInt(register2.getValue(), 2);
+				newValue = op1 * op2;				
+				RegisterManager.updateRegister(vetor_linha[1], newValue);
 				break;	
 				
 			case "div":
@@ -69,6 +101,14 @@ public class DoTranslation {
 				resultado += traduzRegistradores(vetor_linha[2]);
 				resultado += "0000000000";
 				resultado += "011010";
+				
+				register1 = RegisterManager.getRegisterByName(vetor_linha[2]);
+				register2 = RegisterManager.getRegisterByName(vetor_linha[3]);
+				
+				op1 = Integer.parseInt(register1.getValue(), 2);
+				op2 = Integer.parseInt(register2.getValue(), 2);
+				newValue = op1 / op2;				
+				RegisterManager.updateRegister(vetor_linha[1], newValue);
 				break;	
 				
 			case "and":
@@ -78,6 +118,16 @@ public class DoTranslation {
 				resultado += traduzRegistradores(vetor_linha[1]);
 				resultado += "00000";
 				resultado += "100100";
+				
+				register1 = RegisterManager.getRegisterByName(vetor_linha[2]);
+				register2 = RegisterManager.getRegisterByName(vetor_linha[3]);
+				
+				op1 = Integer.parseInt(register1.getValue(), 2);
+				op2 = Integer.parseInt(register2.getValue(), 2);
+				
+				newValue = (op1 & op2);
+				RegisterManager.updateRegister(vetor_linha[1], newValue);
+				
 				break;
 			
 			case "or":
@@ -87,6 +137,15 @@ public class DoTranslation {
 				resultado += traduzRegistradores(vetor_linha[1]);
 				resultado += "00000";
 				resultado += "100101";
+				
+				register1 = RegisterManager.getRegisterByName(vetor_linha[2]);
+				register2 = RegisterManager.getRegisterByName(vetor_linha[3]);
+				
+				op1 = Integer.parseInt(register1.getValue(), 2);
+				op2 = Integer.parseInt(register2.getValue(), 2);
+				
+				newValue = (op1 | op2);
+				RegisterManager.updateRegister(vetor_linha[1], newValue);
 				break;
 				
 			case "nor":
@@ -105,6 +164,18 @@ public class DoTranslation {
 				resultado += traduzRegistradores(vetor_linha[1]);
 				resultado += "00000";
 				resultado += "101010";
+				
+				register1 = RegisterManager.getRegisterByName(vetor_linha[2]);
+				register2 = RegisterManager.getRegisterByName(vetor_linha[3]);
+				
+				op1 = Integer.parseInt(register1.getValue(), 2);
+				op2 = Integer.parseInt(register2.getValue(), 2);
+				
+				if(op1 <  op2) 
+					RegisterManager.updateRegister(vetor_linha[1], 1);
+				else
+					RegisterManager.updateRegister(vetor_linha[1], 0);
+				
 				break;	
 				
 			case "jr":
@@ -148,6 +219,13 @@ public class DoTranslation {
 					binario = "0" + binario;
 				}
 				resultado += binario;
+				
+				register1 = RegisterManager.getRegisterByName(vetor_linha[2]);				
+				op1 = Integer.parseInt(register1.getValue(), 2);
+				op2 = Integer.parseInt(vetor_linha[3]);				
+				newValue = op1 + op2;				
+				RegisterManager.updateRegister(vetor_linha[1], newValue);
+				
 				break;
 				
 			case "andi":
@@ -159,6 +237,14 @@ public class DoTranslation {
 					binario = "0" + binario;
 				}
 				resultado += binario;
+				
+				register1 = RegisterManager.getRegisterByName(vetor_linha[2]);				
+				op1 = Integer.parseInt(register1.getValue(), 2);
+				op2 = Integer.parseInt(vetor_linha[3]);
+				
+				newValue = (op1 & op2);
+				RegisterManager.updateRegister(vetor_linha[1], newValue);
+				
 				break;
 				
 			case "ori":
@@ -170,6 +256,14 @@ public class DoTranslation {
 					binario = "0" + binario;
 				}
 				resultado += binario;
+				
+				register1 = RegisterManager.getRegisterByName(vetor_linha[2]);				
+				op1 = Integer.parseInt(register1.getValue(), 2);
+				op2 = Integer.parseInt(vetor_linha[3]);
+				
+				newValue = (op1 | op2);
+				RegisterManager.updateRegister(vetor_linha[1], newValue);
+				
 				break;	
 				
 			case "slti":
@@ -181,6 +275,16 @@ public class DoTranslation {
 					binario = "0" + binario;
 				}
 				resultado += binario;
+				
+				register1 = RegisterManager.getRegisterByName(vetor_linha[2]);				
+				op1 = Integer.parseInt(register1.getValue(), 2);
+				op2 = Integer.parseInt(vetor_linha[3]);
+				
+				if(op1 <  op2) 
+					RegisterManager.updateRegister(vetor_linha[1], 1);
+				else
+					RegisterManager.updateRegister(vetor_linha[1], 0);
+				
 				break;	
 				
 			case "lw":
@@ -198,7 +302,9 @@ public class DoTranslation {
 				while(binario.length() < 16) {
 					binario = "0" + binario;
 				}
-				resultado += binario;
+				resultado += binario;				
+				MemoryManager.updateMemory("100011", traduzRegistradores(vetor_linha[1]));
+				
 				break;
 				
 			case "sw":
@@ -217,6 +323,8 @@ public class DoTranslation {
 					binario = "0" + binario;
 				}
 				resultado += binario;
+				MemoryManager.updateMemory("100011", traduzRegistradores(vetor_linha[1]));
+				
 				break;	
 				
 			case "beq":

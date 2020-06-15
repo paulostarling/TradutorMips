@@ -6,6 +6,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import org.w3c.dom.stylesheets.MediaList;
+
 public class RegisterManager {
 	private static String fileName = "memory.out";
 	private static ArrayList<Register> registerList;
@@ -46,5 +48,22 @@ public class RegisterManager {
 	    } catch (IOException e) {
 	      e.printStackTrace();
 	    }
+	}
+
+	public static void updateRegister(String registerName, int newValue) {
+		for (Register register : registerList) {
+			if(register.getRegisterName().equals(registerName)) {
+				register.setValue(Integer.toBinaryString(newValue));
+			}
+		}
+	}
+	
+	public static Register getRegisterByName(String registerName) {
+		for (Register register : registerList) {
+			if(register.getRegisterName().equals(registerName)) {
+				return register;
+			}
+		}
+		return null;
 	}
 }
