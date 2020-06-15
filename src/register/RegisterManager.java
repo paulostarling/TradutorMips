@@ -13,7 +13,7 @@ public class RegisterManager {
 	public static void createRegisterFile() {
 		registerList = new ArrayList<Register>();
 		Register register;
-        for(int i = 0; i< 29; i++) {
+        for(int i = 0; i< 31; i++) {
         	String registerName = RegisterUtils.getRegistersName(i);
         	String content = "00000000";
         	
@@ -51,7 +51,7 @@ public class RegisterManager {
 	public static void updateRegister(String registerName, int newValue) {
 		for (Register register : registerList) {
 			if(register.getRegisterName().equals(registerName)) {
-				register.setValue(Integer.toBinaryString(newValue));
+				register.setValue(Integer.toHexString(newValue));
 			}
 		}
 	}

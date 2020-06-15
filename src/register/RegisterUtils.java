@@ -61,6 +61,10 @@ public class RegisterUtils {
 			return "k1";
 		case 28:
 			return "k2";
+		case 29:
+			return "lo";
+		case 30:
+			return "hi";
 		default:
 			return null;
 		}

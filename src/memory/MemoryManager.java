@@ -14,12 +14,14 @@ public class MemoryManager {
 	public static void createMemoryFile() {
 		memoryList = new ArrayList<Memory>();
 		Memory memory;
-        for(int i = 0; i< 4096; i+=16) {
-        	String address = Integer.toHexString(i);
+		int j = 0;
+        for(int i = 0; i< 4096; i++) {
+        	String address = Integer.toHexString(j);
         	String content = "00000000";
         	
         	memory = new Memory(address, content);
         	memoryList.add(memory);
+        	j+=16;
         }
         
         FileWriter arquivo;		

@@ -46,8 +46,8 @@ public class DoTranslation {
 				register1 = RegisterManager.getRegisterByName(vetor_linha[2]);
 				register2 = RegisterManager.getRegisterByName(vetor_linha[3]);
 				
-				op1 = Integer.parseInt(register1.getValue(), 2);
-				op2 = Integer.parseInt(register2.getValue(), 2);
+				op1 = Integer.parseInt(register1.getValue(), 16);
+				op2 = Integer.parseInt(register2.getValue(), 16);
 				newValue = op1 + op2;				
 				RegisterManager.updateRegister(vetor_linha[1], newValue);
 				
@@ -73,8 +73,8 @@ public class DoTranslation {
 				register1 = RegisterManager.getRegisterByName(vetor_linha[2]);
 				register2 = RegisterManager.getRegisterByName(vetor_linha[3]);
 				
-				op1 = Integer.parseInt(register1.getValue(), 2);
-				op2 = Integer.parseInt(register2.getValue(), 2);
+				op1 = Integer.parseInt(register1.getValue(), 16);
+				op2 = Integer.parseInt(register2.getValue(), 16);
 				newValue = op1 - op2;				
 				RegisterManager.updateRegister(vetor_linha[1], newValue);
 				break;
@@ -86,13 +86,13 @@ public class DoTranslation {
 				resultado += "0000000000";
 				resultado += "011000";
 				
-				register1 = RegisterManager.getRegisterByName(vetor_linha[2]);
-				register2 = RegisterManager.getRegisterByName(vetor_linha[3]);
+				register1 = RegisterManager.getRegisterByName(vetor_linha[1]);
+				register2 = RegisterManager.getRegisterByName(vetor_linha[2]);
 				
-				op1 = Integer.parseInt(register1.getValue(), 2);
-				op2 = Integer.parseInt(register2.getValue(), 2);
+				op1 = Integer.parseInt(register1.getValue(), 16);
+				op2 = Integer.parseInt(register2.getValue(), 16);
 				newValue = op1 * op2;				
-				RegisterManager.updateRegister(vetor_linha[1], newValue);
+				RegisterManager.updateRegister("hi", newValue);
 				break;	
 				
 			case "div":
@@ -102,13 +102,20 @@ public class DoTranslation {
 				resultado += "0000000000";
 				resultado += "011010";
 				
-				register1 = RegisterManager.getRegisterByName(vetor_linha[2]);
-				register2 = RegisterManager.getRegisterByName(vetor_linha[3]);
+				register1 = RegisterManager.getRegisterByName(vetor_linha[1]);
+				register2 = RegisterManager.getRegisterByName(vetor_linha[2]);
 				
-				op1 = Integer.parseInt(register1.getValue(), 2);
-				op2 = Integer.parseInt(register2.getValue(), 2);
-				newValue = op1 / op2;				
-				RegisterManager.updateRegister(vetor_linha[1], newValue);
+				op1 = Integer.parseInt(register1.getValue(), 16);
+				op2 = Integer.parseInt(register2.getValue(), 16);
+				if(op1>op2) {
+					newValue = op1 / op2;
+					RegisterManager.updateRegister("hi", newValue);
+				}else if (op2>op1) {
+					newValue = op1 % op2;
+					RegisterManager.updateRegister("lo", newValue);
+				}
+								
+				
 				break;	
 				
 			case "and":
@@ -122,8 +129,8 @@ public class DoTranslation {
 				register1 = RegisterManager.getRegisterByName(vetor_linha[2]);
 				register2 = RegisterManager.getRegisterByName(vetor_linha[3]);
 				
-				op1 = Integer.parseInt(register1.getValue(), 2);
-				op2 = Integer.parseInt(register2.getValue(), 2);
+				op1 = Integer.parseInt(register1.getValue(), 16);
+				op2 = Integer.parseInt(register2.getValue(), 16);
 				
 				newValue = (op1 & op2);
 				RegisterManager.updateRegister(vetor_linha[1], newValue);
@@ -141,8 +148,8 @@ public class DoTranslation {
 				register1 = RegisterManager.getRegisterByName(vetor_linha[2]);
 				register2 = RegisterManager.getRegisterByName(vetor_linha[3]);
 				
-				op1 = Integer.parseInt(register1.getValue(), 2);
-				op2 = Integer.parseInt(register2.getValue(), 2);
+				op1 = Integer.parseInt(register1.getValue(), 16);
+				op2 = Integer.parseInt(register2.getValue(), 16);
 				
 				newValue = (op1 | op2);
 				RegisterManager.updateRegister(vetor_linha[1], newValue);
@@ -168,8 +175,8 @@ public class DoTranslation {
 				register1 = RegisterManager.getRegisterByName(vetor_linha[2]);
 				register2 = RegisterManager.getRegisterByName(vetor_linha[3]);
 				
-				op1 = Integer.parseInt(register1.getValue(), 2);
-				op2 = Integer.parseInt(register2.getValue(), 2);
+				op1 = Integer.parseInt(register1.getValue(), 16);
+				op2 = Integer.parseInt(register2.getValue(), 16);
 				
 				if(op1 <  op2) 
 					RegisterManager.updateRegister(vetor_linha[1], 1);
@@ -221,7 +228,7 @@ public class DoTranslation {
 				resultado += binario;
 				
 				register1 = RegisterManager.getRegisterByName(vetor_linha[2]);				
-				op1 = Integer.parseInt(register1.getValue(), 2);
+				op1 = Integer.parseInt(register1.getValue(), 16);
 				op2 = Integer.parseInt(vetor_linha[3]);				
 				newValue = op1 + op2;				
 				RegisterManager.updateRegister(vetor_linha[1], newValue);
@@ -239,7 +246,7 @@ public class DoTranslation {
 				resultado += binario;
 				
 				register1 = RegisterManager.getRegisterByName(vetor_linha[2]);				
-				op1 = Integer.parseInt(register1.getValue(), 2);
+				op1 = Integer.parseInt(register1.getValue(), 16);
 				op2 = Integer.parseInt(vetor_linha[3]);
 				
 				newValue = (op1 & op2);
@@ -258,7 +265,7 @@ public class DoTranslation {
 				resultado += binario;
 				
 				register1 = RegisterManager.getRegisterByName(vetor_linha[2]);				
-				op1 = Integer.parseInt(register1.getValue(), 2);
+				op1 = Integer.parseInt(register1.getValue(), 16);
 				op2 = Integer.parseInt(vetor_linha[3]);
 				
 				newValue = (op1 | op2);
@@ -277,7 +284,7 @@ public class DoTranslation {
 				resultado += binario;
 				
 				register1 = RegisterManager.getRegisterByName(vetor_linha[2]);				
-				op1 = Integer.parseInt(register1.getValue(), 2);
+				op1 = Integer.parseInt(register1.getValue(), 16);
 				op2 = Integer.parseInt(vetor_linha[3]);
 				
 				if(op1 <  op2) 
