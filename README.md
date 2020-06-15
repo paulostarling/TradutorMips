@@ -6,13 +6,13 @@ O programa desenvolvido simula o funcionamento de uma máquina MIPS, possuindo u
 Banco de Registradores e Memória Principal. 
 
 # Descrição do funcionamento do programa:
-
- 1. Leitura de um arquivo de entrada.
- 2. Decodificar o comando em linguagem de montagem para instrução de máquina do MIPS;
- 3. Atualizar o valor dos registradores envolvidos;
- 4. Atualizar o conteúdo da memória principal;
- 5. Escrever o conteúdo dos registradores no arquivo de saída *register.out*
- 6. Escrever o conteúdo da memória no arquivo de saída *memory.out*
+ 1. Para o funcionamento basta executar o programa e rodar o comando "mips32-simulator [nome do arquivo de entrada]"
+ 2. O programa efetuará a leitura do arquivo de entrada.
+ 3. Decodificará o comando em linguagem de montagem para instrução de máquina do MIPS;
+ 4. Atualizará o valor dos registradores envolvidos;
+ 5. Atualizará o conteúdo da memória principal;
+ 6. Efetuará a escrita do conteúdo dos registradores no arquivo de saída *register.out*
+ 7. Efetuará a  escrita do conteúdo da memória no arquivo de saída *memory.out*
 
 # Descrição de classes e métodos: 
 
