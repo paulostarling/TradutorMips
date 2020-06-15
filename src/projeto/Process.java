@@ -38,7 +38,6 @@ public class Process {
 		        data = myReader.nextLine();
 		        resultado = DoTranslation.doTranslation(data);
 		        writeInFile(out_file_name, resultado);
-		        MemoryManager.addMemoryIndex();
 		      }
 		      myReader.close();	
 		      MemoryManager.writeToFile();

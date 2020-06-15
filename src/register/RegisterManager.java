@@ -6,16 +6,14 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import org.w3c.dom.stylesheets.MediaList;
-
 public class RegisterManager {
-	private static String fileName = "memory.out";
+	private static String fileName = "register.out";
 	private static ArrayList<Register> registerList;
 		
 	public static void createRegisterFile() {
 		registerList = new ArrayList<Register>();
 		Register register;
-        for(int i = 0; i< 32; i++) {
+        for(int i = 0; i< 29; i++) {
         	String registerName = RegisterUtils.getRegistersName(i);
         	String content = "00000000";
         	

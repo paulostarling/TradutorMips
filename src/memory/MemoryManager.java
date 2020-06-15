@@ -48,10 +48,6 @@ public class MemoryManager {
 	      e.printStackTrace();
 	    }
 	}
-	    
-	public static void addMemoryIndex() {
-		index++;
-	}
 
 	public static void updateMemory(String operacao, String registrador) {
 		Memory newMemory = memoryList.get(index);

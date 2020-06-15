@@ -302,8 +302,9 @@ public class DoTranslation {
 				while(binario.length() < 16) {
 					binario = "0" + binario;
 				}
-				resultado += binario;				
-				MemoryManager.updateMemory("100011", traduzRegistradores(vetor_linha[1]));
+				resultado += binario;
+				
+				//MemoryManager.updateMemory("100011", traduzRegistradores(vetor_linha[1]));
 				
 				break;
 				
@@ -323,7 +324,7 @@ public class DoTranslation {
 					binario = "0" + binario;
 				}
 				resultado += binario;
-				MemoryManager.updateMemory("100011", traduzRegistradores(vetor_linha[1]));
+				//MemoryManager.updateMemory("100011", traduzRegistradores(vetor_linha[1]));
 				
 				break;	
 				
