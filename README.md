@@ -1,5 +1,5 @@
 # TradutorMips
-## Trbalho de Arquitetura de Computadores: Simulador de Instruções MIPS.
+## Trabalho de Arquitetura de Computadores: Simulador de Instruções MIPS.
 - MIPS (microprocessador sem estágios intertravados de pipeline) é uma arquitetura baseada em registrador, ou seja, a CPU usa apenas 
 registradores para realizar suas operações aritiméticas e lógicas.
 O programa desenvolvido simula o funcionamento de uma máquina MIPS, possuindo uma Unidade Lógica e Aritmética, 
